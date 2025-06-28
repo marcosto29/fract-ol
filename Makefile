@@ -6,19 +6,22 @@
 #    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 20:04:27 by marcos            #+#    #+#              #
-#    Updated: 2025/06/25 20:27:29 by marcos           ###   ########.fr        #
+#    Updated: 2025/06/28 19:42:03 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 LFLAGS =  -L./libft -lft -L./minilibx -lmlx -lXext -lX11 -lm
 
 IFLAGS = -Iminilibx
 
 SRCS = main.c \
+		free_memory.c \
+		fractol_creation.c \
+		fractol_events.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -40,6 +43,7 @@ clean:
 	@rm -rf *.o
 
 fclean: clean
+	@$(MAKE) -C ./minilibx clean
 	@$(MAKE) -C ./libft fclean
 	@rm -rf $(NAME)
 
