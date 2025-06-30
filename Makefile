@@ -6,7 +6,7 @@
 #    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 20:04:27 by marcos            #+#    #+#              #
-#    Updated: 2025/06/28 19:42:03 by marcos           ###   ########.fr        #
+#    Updated: 2025/06/30 20:33:33 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -g -Wall -Werror -Wextra
 
 LFLAGS =  -L./libft -lft -L./minilibx -lmlx -lXext -lX11 -lm
 
-IFLAGS = -Iminilibx
+IFLAGS = -Iminilibx -Ilibft -Ilibft/libftprintf -Ilibft/libftget_next_line
 
 SRCS = main.c \
 		free_memory.c \

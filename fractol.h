@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:14:16 by marcos            #+#    #+#             */
-/*   Updated: 2025/06/28 19:37:01 by marcos           ###   ########.fr       */
+/*   Updated: 2025/06/30 21:10:16 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 
 # include "mlx.h"
 # include "mlx_int.h"
-# include "libft/libft.h"
-# include "libft/libftprintf/libftprintf.h"
-# include "libft/libftget_next_line/libftget_next_line.h"
+# include "libft.h"
+# include "libftprintf.h"
+# include "libftget_next_line.h"
+# include <math.h>
+# include <limits.h>
+# include <float.h>
+
+typedef	struct	mandelbrot
+{
+	double	imaginary;
+	double	real;
+}	t_mandelbrot;
 
 typedef	struct	x_window
 {
