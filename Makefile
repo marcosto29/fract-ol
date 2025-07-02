@@ -6,7 +6,7 @@
 #    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 20:04:27 by marcos            #+#    #+#              #
-#    Updated: 2025/06/30 20:33:33 by marcos           ###   ########.fr        #
+#    Updated: 2025/07/02 20:22:45 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ SRCS = main.c \
 		free_memory.c \
 		fractol_creation.c \
 		fractol_events.c \
+		fractal.c \
+		math.c \
+		mandelbrot.c \
 
 OBJS = $(SRCS:.c=.o)
 

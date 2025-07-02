@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: matoledo <matoledo@student.42madrid.com    +#+  +:+       +#+         #
+#    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 16:09:09 by matoledo          #+#    #+#              #
-#    Updated: 2025/06/12 11:33:56 by matoledo         ###   ########.fr        #
+#    Updated: 2025/07/02 23:12:44 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
 
-SRCS = ft_atol.c \
+SRCS = ft_atod.c \
 	ft_atoi.c \
+	ft_atol.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_isalnum.c \
