@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 23:11:16 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/03 13:38:34 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:25:43 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double	ft_atod(const char *nptr)
 	nptr++;
 	second_part = ft_atoi(nptr);
 	number += first_part;
-	while (second_part > 1)
+	while (second_part >= 1)
 		second_part /= 10;
 	number += second_part;
 	return (number * negative);

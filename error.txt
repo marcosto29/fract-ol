@@ -1,3 +1,4 @@
 To render a correct fractal, either write:
 ./fractol Mandelbrot.
 ./fractol Julia "first double argument" "second double argument".
+Both arguments need to be between -2 and 2

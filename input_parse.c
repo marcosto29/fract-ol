@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:09:51 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/03 16:54:11 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:24:01 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ static void	show_input_error(void)
 
 	fd = open("error.txt", O_RDONLY);
 	print = get_next_line(fd);
-	while (*print)
+	while (print && *print)
 	{
 		ft_printf("%s", print);
 		free(print);
 		print = get_next_line(fd);
 	}
+	close(fd);
 	exit(1);
 }
 
@@ -79,6 +80,9 @@ static int	valid_fractal_argument(char *arg)
 
 int	valid_double_argument(char *arg)
 {
+	char	*aux;
+
+	aux = arg;
 	if (*arg == '-' || *arg == '+')
 		arg++;
 	while (*arg)
@@ -89,6 +93,8 @@ int	valid_double_argument(char *arg)
 			return (1);
 		arg++;
 	}
+	if (ft_atod(aux) < -2.0 || ft_atod(aux) > 2.0)
+		return (1);
 	return (0);
 }
 
