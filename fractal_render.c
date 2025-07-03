@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   fractal_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:18:01 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/02 23:09:04 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 17:45:10 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_mandelbrot	*add_z(t_mandelbrot *z, t_mandelbrot *c)
+t_fractal	*add_z(t_fractal *z, t_fractal *c)
 {
 	double	z_real;
 	double	z_imaginary;
@@ -28,7 +28,7 @@ t_mandelbrot	*add_z(t_mandelbrot *z, t_mandelbrot *c)
 	return (z);
 }
 
-t_mandelbrot	*pow_z(t_mandelbrot *z)
+t_fractal	*pow_z(t_fractal *z)
 {
 	double	real;
 	double	imaginary;
@@ -40,15 +40,14 @@ t_mandelbrot	*pow_z(t_mandelbrot *z)
 	return (z);
 }
 
-
 int	check_mandelbrot(double x, double y)
 {
 	int				iterations;
-	t_mandelbrot	*z;
-	t_mandelbrot	*c;
+	t_fractal		*z;
+	t_fractal		*c;
 
-	z = ft_calloc(sizeof(t_mandelbrot), 1);
-	c = ft_calloc(sizeof(t_mandelbrot), 1);
+	z = ft_calloc(sizeof(t_fractal), 1);
+	c = ft_calloc(sizeof(t_fractal), 1);
 	z->real = 0;
 	z->imaginary = 0;
 	c->real = x;
@@ -70,18 +69,18 @@ int	check_mandelbrot(double x, double y)
 	return (0);
 }
 
-int	check_julia(double x, double y, double c_imaginary, double c_real)
+int	check_julia(double x, double y, double c_real, double c_imaginary)
 {
 	int				iterations;
-	t_mandelbrot	*z;
-	t_mandelbrot	*c;
+	t_fractal		*z;
+	t_fractal		*c;
 
-	z = ft_calloc(sizeof(t_mandelbrot), 1);
-	c = ft_calloc(sizeof(t_mandelbrot), 1);
-	z->real = y;
-	z->imaginary = x;
-	c->real = c_imaginary;
-	c->imaginary = c_real;
+	z = ft_calloc(sizeof(t_fractal), 1);
+	c = ft_calloc(sizeof(t_fractal), 1);
+	z->real = x;
+	z->imaginary = y;
+	c->real = c_real;
+	c->imaginary = c_imaginary;
 	iterations = 0;
 	while (iterations < 42)
 	{
@@ -108,18 +107,22 @@ int	check_julia(double x, double y, double c_imaginary, double c_real)
 //ie = input_end
 //i = input
 //os + ((oe - os) / (ie - is)) * (i - is)
-int	mandelbrot(double x, int width, double y, int heigth)
+int	fractal(double x, double y, t_x_screen *x_screen)
 {
 	int	r;
 	int	g;
 	int	b;
 	int	figure;
 
-	x = x * 4.0 / width - 2.0;
-	y = y * 4.0 / heigth - 2.0;
-	figure = check_mandelbrot(x, y);
-	r = (figure * 50) % 256;
-	g = (figure * 0) % 256;
-	b = (figure * 50) % 256;
+	x = x * 4.0 / x_screen->x_img->width - 2.0;
+	y = y * 4.0 / x_screen->x_img->heigth - 2.0;
+	if (ft_strncmp(x_screen->x_img->config->name, "MANDELBROT", 10) == 0)
+		figure = check_mandelbrot(x, y);
+	else
+		figure = check_julia(x, y,
+				x_screen->x_img->config->x, x_screen->x_img->config->y);
+	r = (figure * x_screen->x_img->config->r_percentage) % 256;
+	g = (figure * x_screen->x_img->config->g_percentage) % 256;
+	b = (figure * x_screen->x_img->config->b_percentage) % 256;
 	return (r << 16 | g << 8 | b);
 }

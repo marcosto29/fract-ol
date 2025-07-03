@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:12:57 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/02 23:10:20 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 15:39:16 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 //zoom in - out
 //x / 2, y / 2 <- double the size x / 0.5, y / 0.5 <- half the size
 //add to x and y to move in the axis x + 10, y + 10
-void	draw_fractal(t_x_screen *x_screen, int width,
-					int heigth, t_fractal_config *config)
+void	draw_fractal(t_x_screen *x_screen, t_fractal_config *config)
 {
 	double				x;
 	double				y;
@@ -28,13 +27,13 @@ void	draw_fractal(t_x_screen *x_screen, int width,
 			&(x_screen->x_img->bpp), &(x_screen->x_img->sl),
 			&(x_screen->x_img->end));
 	y = 0;
-	while (y < heigth)
+	while (y < x_screen->x_img->heigth)
 	{
 		x = 0;
-		while (x < width)
+		while (x < x_screen->x_img->width)
 		{
-			color = mandelbrot((x / config->zoom) + config->x_mouse, width,
-					(y / config->zoom) + config->y_mouse, heigth);
+			color = fractal((x / config->zoom) + config->x_mouse,
+					(y / config->zoom) + config->y_mouse, x_screen);
 			img_color = mlx_get_color_value(x_screen->mlx, color);
 			*(unsigned int *)img_position = img_color;
 			x++;

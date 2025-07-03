@@ -6,7 +6,7 @@
 #    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 20:04:27 by marcos            #+#    #+#              #
-#    Updated: 2025/07/02 20:22:45 by marcos           ###   ########.fr        #
+#    Updated: 2025/07/03 17:00:23 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ IFLAGS = -Iminilibx -Ilibft -Ilibft/libftprintf -Ilibft/libftget_next_line
 
 SRCS = main.c \
 		free_memory.c \
-		fractol_creation.c \
-		fractol_events.c \
+		fractal_creation.c \
+		fractal_events.c \
+		fractal_render.c \
 		fractal.c \
 		math.c \
-		mandelbrot.c \
+		input_parse.c \
 
 OBJS = $(SRCS:.c=.o)
 

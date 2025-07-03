@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_events.c                                   :+:      :+:    :+:   */
+/*   fractal_events.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:34:36 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/02 23:10:07 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 17:47:51 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	close_window(t_x_screen *x_screen)
 {
-	printf("Closing...\n");
 	free_screen(x_screen);
 	exit (0);
 }
@@ -23,6 +22,23 @@ int	key_event(int key, t_x_screen *x_screen)
 {
 	if (key == 0xff1b)
 		close_window(x_screen);
+	if (key == 0x72)
+		colors_value(x_screen->x_img->config, 10, -5, -5);
+	if (key == 0x67)
+		colors_value(x_screen->x_img->config, -5, 10, -5);
+	if (key == 0x62)
+		colors_value(x_screen->x_img->config, -5, -5, 10);
+	if (key == 0xff51)
+		x_screen->x_img->config->x_mouse += 10;
+	if (key == 0xff52)
+		x_screen->x_img->config->y_mouse += 10;
+	if (key == 0xff53)
+		x_screen->x_img->config->x_mouse -= 10;
+	if (key == 0xff54)
+		x_screen->x_img->config->y_mouse -= 10;
+	draw_fractal(x_screen, x_screen->x_img->config);
+	show_image(x_screen, x_screen->x_img->x_beginning,
+		x_screen->x_img->y_beginning);
 	return (1);
 }
 
@@ -45,11 +61,13 @@ int	mouse_event(int mouse, int x, int y, t_x_screen *x_screen)
 		config->zoom *= 1.1;
 	else if (mouse == 5)
 		config->zoom /= 1.1;
-	config->x_mouse = b_x - (b_x / config->zoom);
-	config->y_mouse = b_y - (b_y / config->zoom);
-	draw_fractal(x_screen, x_screen->x_img->width,
-		x_screen->x_img->heigth, config);
-	show_image(x_screen, x_screen->x_img->x_beginning,
-		x_screen->x_img->y_beginning);
+	if (mouse == 4 || mouse == 5)
+	{
+		config->x_mouse = b_x - (b_x / config->zoom);
+		config->y_mouse = b_y - (b_y / config->zoom);
+		draw_fractal(x_screen, config);
+		show_image(x_screen, x_screen->x_img->x_beginning,
+			x_screen->x_img->y_beginning);
+	}
 	return (1);
 }

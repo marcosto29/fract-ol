@@ -6,11 +6,24 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:37:46 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/02 20:10:45 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 13:41:44 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	free_memory(char **double_array)
+{
+	char	**aux;
+
+	aux = double_array;
+	while (*aux)
+	{
+		free(*aux);
+		aux++;
+	}
+	free(double_array);
+}
 
 void	free_image(t_x_screen *x_screen)
 {

@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:48:58 by matoledo          #+#    #+#             */
-/*   Updated: 2025/07/02 23:12:18 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 13:38:50 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-double  ft_atod(const char *nptr);
+double	ft_atod(const char *nptr);
 int		ft_atoi(const char *nptr);
 long	ft_atol(const char *nptr);
 void	ft_bzero(void *s, size_t n);

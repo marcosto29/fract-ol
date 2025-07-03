@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_creation.c                                 :+:      :+:    :+:   */
+/*   fractal_creation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:30:45 by marcos            #+#    #+#             */
-/*   Updated: 2025/07/02 20:15:48 by marcos           ###   ########.fr       */
+/*   Updated: 2025/07/03 17:04:26 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+t_fractal_config	*configurate_fractal(char *argv[])
+{
+	t_fractal_config	*config;
+
+	config = ft_calloc(sizeof(t_fractal_config), 1);
+	config->zoom = 1.0;
+	config->x_mouse = 0;
+	config->y_mouse = 0;
+	config->r_percentage = 20;
+	config->g_percentage = 35;
+	config->b_percentage = 40;
+	config->name = ft_strdup(argv[1]);
+	if (ft_strncmp(config->name, "JULIA", ft_strlen(config->name)) == 0)
+	{
+		config->x = ft_atod(argv[2]);
+		config->y = ft_atod(argv[3]);
+	}
+	return (config);
+}
 
 t_x_window	*create_window(t_x_screen *x_screen, int width,
 			int heigth, char *name)
@@ -60,7 +80,6 @@ t_x_screen	*create_screen(int window_width, int window_heigth, char *name)
 		exit(1);
 	x_screen->x_win = create_window(x_screen, window_width,
 			window_heigth, name);
-	x_screen->x_win->name = name;
 	if (!(x_screen->x_win))
 		exit(1);
 	return (x_screen);
