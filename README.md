@@ -9,7 +9,9 @@ Fractol is a graphic project which with the help of an external library (minilib
     * [Controls](#Controls)
 3. [Minilibx and graph enviroment](#Minilibx)
 4. [Math Theory behind it](#Fractals)
-5. [Program functionality Summary](#How-it-works)
+    * [Mandelbrot](#Mandelbrot)
+    * [Julia](#Julia)
+6. [Program functionality Summary](#How-it-works)
 
 ## Install and usage
 
@@ -49,5 +51,49 @@ It works the same way as X11: it connects to the graphics server by opening a di
 Basically with the help of Minilibx, a decent render can be made without deep knowladge of X-Window providing simple functions that handle a group of complex functionalities behind them. 
 
 ## Fractals
+
+The main goal of this project is to render a fractal on screen, but what is exactly a fractal.
+
+A fractal is a geometric structure whose pattern repeats itself at different scales, almost as if it were an infinite loop.
+
+This can be seen when zooming in and out a fractal, it doesnt matter how deep is zoomed the fractal will hold the same or similar shapesthroughout the process.
+
+Another common feature is the fact that a fractal has its own dimension, some cannot be represented with existing numbers, recurring to imaginary ones, other are more complex than 1 dimension but less than 2.
+
+An interesting fact, fractals can be found in nature, such as snowflakes or even trees.
+
+<p align = "center">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Snowflake.jpeg" "Fractal Example">
+</p>
+
+### Mandelbrot
+
+The Mandelbrot set can be represented with the help of the following formula:
+
+$`z_{0} = 0`$
+
+$`z_{n + 1} = z_{n}^2 + c`$
+
+Any number applied to this formula that does not diverge is considered part of the set.
+
+If c = 1, the result succsession is 0, 1, 2, 5, 26, etc. Diverge, therefore 1 is not part of the Mandelbrot set.
+
+If c = -1, the result succsession is 0, -1, 0, -1, 0, etc. It does not diverge, therefore -1 is part of the Mandelbrot set.
+
+The Mandelbrot set, however, is represented on the complex plane, with the help of i ($`\sqrt{-1}`$), any set of numbers represented on this plane is complex with an existing and imaginary number, one example would be **c = (-1, 0.1i)**.
+
+It is known that every point whose distance to the origin is greater than 2 ($`x^2 + y^2 \gt 4`$) does not belong to the Mandelbrot set.
+
+### Julia
+
+The Julia set is similar to the Mandelbrot set, the formula used to check a number is a little bit different:
+
+$`z_{0} = z`$
+
+$`z_{n + 1} = z_{n}^2 + c`$
+
+Just like in Mandelbrot the way to check if a number is part of the set is to observe if it diverges, in this case, however, **c** is gonna be a constant number decide by the user, while **z** instead of starting at 0 will start at the respective coordinate.
+
+The rest of the procedure is made the same way, checking if the distance to the origin is greater than 2.
 
 ## How it Works
