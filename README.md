@@ -6,6 +6,7 @@ Fractol is a graphic project which with the help of an external library (minilib
 
 1. [Project Description](#Description)
 2. [Install and usage](#Install-and-usage)
+    * [Controls](#Controls)
 3. [Minilibx and graph enviroment](#Minilibx)
 4. [Math Theory behind it](#Fractals)
 5. [Program functionality Summary](#How-it-works)
@@ -16,15 +17,28 @@ Fractol is a graphic project which with the help of an external library (minilib
 ```
 git clone https://github.com/marcosto29/fract-ol.git
 ```
-* To run program, run the following command:
-```
+* To compile program, run the following command:
+```diff
 make
+# Some packages might be needed
+# If required --> sudo apt-get install gcc make xorg libxext-dev libbsd-dev
 ```
 * To execute the program, run the following command:
 ```diff
 ./fractol (either Mandelbrot or Julia)
 # The program handles input error showing a message on how to fix it
 ```
+### Controls
+
+| Input | Output |
+:------|------:
+**Left** arrow | Move fractal to the **left**|
+**Right** arrow | Move fractal to the **right**|
+**Up** arrow | Move fractal **up**|
+**Down** arrow | Move fractal **down**|
+Scroll **Up** | Zoom **In** |
+Scroll **Down** | Zoom **Out** |
+**Esc** Button | **Close** window |
 
 ## Minilibx
 
