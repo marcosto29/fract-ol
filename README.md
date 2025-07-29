@@ -85,7 +85,7 @@ The Mandelbrot set, however, is represented on the complex plane, with the help 
 It is known that every point whose distance to the origin is greater than 2 ($`x^2 + y^2 \gt 4`$) does not belong to the Mandelbrot set.
 
 <p align = "center">
-   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Mnadelbrot.png" "Mandelbrot">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Mandelbrot.png" "Mandelbrot">
 </p>
 
 ### Julia
