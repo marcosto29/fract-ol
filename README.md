@@ -63,7 +63,7 @@ Another common feature is the fact that a fractal has its own dimension, some ca
 An interesting fact, fractals can be found in nature, such as snowflakes or even trees.
 
 <p align = "center">
-   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Snowflake.jpeg" "Fractal Example">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Snowflake.jpeg" "Fractal Example">
 </p>
 
 ### Mandelbrot
@@ -84,6 +84,10 @@ The Mandelbrot set, however, is represented on the complex plane, with the help 
 
 It is known that every point whose distance to the origin is greater than 2 ($`x^2 + y^2 \gt 4`$) does not belong to the Mandelbrot set.
 
+<p align = "center">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Mnadelbrot.png" "Mandelbrot">
+</p>
+
 ### Julia
 
 The Julia set is similar to the Mandelbrot set, the formula used to check a number is a little bit different:
@@ -95,6 +99,10 @@ $`z_{n + 1} = z_{n}^2 + c`$
 Just like in Mandelbrot the way to check if a number is part of the set is to observe if it diverges, in this case, however, **c** is gonna be a constant number decide by the user, while **z** instead of starting at 0 will start at the respective coordinate.
 
 The rest of the procedure is made the same way, checking if the distance to the origin is greater than 2.
+
+<p align = "center">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Julia.png" "Julia">
+</p>
 
 ## How it Works
 
