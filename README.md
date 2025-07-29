@@ -82,6 +82,10 @@ If c = -1, the result succsession is 0, -1, 0, -1, 0, etc. It does not diverge, 
 
 The Mandelbrot set, however, is represented on the complex plane, with the help of i ($`\sqrt{-1}`$), any set of numbers represented on this plane is complex with an existing and imaginary number, one example would be **c = (-1, 0.1i)**.
 
+<p align = "center">
+   <img width = "300" src = "https://github.com/marcosto29/fract-ol/blob/main/Images/Complex Plane.png" "Mandelbrot">
+</p>
+
 It is known that every point whose distance to the origin is greater than 2 ($`x^2 + y^2 \gt 4`$) does not belong to the Mandelbrot set.
 
 <p align = "center">
@@ -106,18 +110,26 @@ The rest of the procedure is made the same way, checking if the distance to the 
 
 ## How it Works
 
+### Environment Set Up
+
 As explained above, the minilibx works the same way as the X11, therefore, after parsing the input and cheking that everything is ready, the first thing that needs to be done is to open the display that will allow the communication between the program and the graph server.
 
 The minilibx makes all this process easier by just calling the mlx_init function which opens the display and returns a void pointer that will contain the information needed to communicate and render images.
 
 After opening the display the creation of windows is just as easy, calling the function mlx_new_window passing display reference, and some configuration parameters such as the width the heigth and the name will built it and return it as a void pointer. On my approach I wanted to hook the events needed to close the window and listen to keyboard inputs right after creating it, to make it more intuitive.
 
+#### Hooks
+
 To hook an event, the mlx_hook function is called with: the window to be hooked, the input that will trigger, the mask needed to listen to it, the function called, and the display reference.
 
-The infinite loop that listen to inputs on the minilibx is easily handle by the mlx_loop function.
+The infinite loop that listen to inputs on the minilibx is easily handle by the mlx_loop function, this function is called at the end of the program.
 
 Finally, since painting on the window (which can be done) is a worst approaching, the next thing needed is an image, to create it, just like with the window by calling mlx_new_image with the display reference and the width and heigth will return a canvas as a void pointer ready to be painted.
 
 ### Image painting
 
-After closing the window, some important functions to be called to make it clean are: mlx_loop_end, mlx_destroy_image, mlx_clear_window, mlx_destroy_window, mlx_destroy_display, all of them with their respective reference.
+
+
+### Environment Close
+
+To make a clean close of the graph environment minilibx offer important functions to free the memory correctly: mlx_loop_end, mlx_destroy_image, mlx_clear_window, mlx_destroy_window, mlx_destroy_display, all of them with their respective reference.

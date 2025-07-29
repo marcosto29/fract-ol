@@ -46,6 +46,7 @@ t_x_window	*create_window(t_x_screen *x_screen, int width,
 		return (NULL);
 	mlx_hook(x_win->win, 17, 1L << 1, &close_window, x_screen);
 	mlx_hook(x_win->win, 2, 1L << 0, &key_event, x_screen);
+	mlx_mouse_hook(x_win->win, mouse_event, x_screen);
 	return (x_win);
 }
 

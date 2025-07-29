@@ -33,6 +33,5 @@ int	main(int argc, char *argv[])
 	x_screen->x_img->config = config;
 	draw_fractal(x_screen, config);
 	show_image(x_screen, 0, 0);
-	mlx_mouse_hook(x_screen->x_win->win, mouse_event, x_screen);
 	mlx_loop(x_screen->mlx);
 }
