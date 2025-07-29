@@ -118,8 +118,6 @@ The minilibx makes all this process easier by just calling the mlx_init function
 
 After opening the display the creation of windows is just as easy, calling the function mlx_new_window passing display reference, and some configuration parameters such as the width the heigth and the name will built it and return it as a void pointer. On my approach I wanted to hook the events needed to close the window and listen to keyboard inputs right after creating it, to make it more intuitive.
 
-#### Hooks
-
 To hook an event, the mlx_hook function is called with: the window to be hooked, the input that will trigger, the mask needed to listen to it, the function called, and the display reference.
 
 The infinite loop that listen to inputs on the minilibx is easily handle by the mlx_loop function, this function is called at the end of the program.
@@ -128,7 +126,23 @@ Finally, since painting on the window (which can be done) is a worst approaching
 
 ### Image painting
 
+When talking about how the image is painted, the first thing to understand is how is the image represented on memory, when making a mlx_new_image, the minilibx does not show directly the image on the screen, the function reserves the memory necessary to represent the image created.
 
+once this memory is reserved, the program can go through this array, writing to create the image.
+
+creating the image is as simple as making math operations. Minilibx has a function called mlx_get_data_addr that returns some information about the image like: bits needed per pixel, the size of a line and endian.
+
+To paint a pixel with the desired color (in this case as a fractal), the program simply calculates where the pixel is within the fractal parameters and paints it with a color that shows its state, then the program simply jumps "bits per pixel" to the next pixel.
+
+Once the image is created and painted, the program shows it on screen with mlx_put_image_to_window.
+
+### Events
+
+To handle events, there are safe names for functions that are called after triggering the mouse (mouse_event) or keyboard (key_event) event. This functions have specified parameters which have some important information of the trigger.
+
+The key_event function has a special parameter to determine which key was pressed. The mouse_event not only has a parameter to determine which mouse button was pressed, but also stores information about the pointer coordinates.
+
+With this information the program handles all the cases specified above, performing the necessary operations on the image.
 
 ### Environment Close
 

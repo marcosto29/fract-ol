@@ -15,6 +15,8 @@
 //zoom in - out
 //x / 2, y / 2 <- double the size x / 0.5, y / 0.5 <- half the size
 //add to x and y to move in the axis x + 10, y + 10
+//since bpp is 32, it needs to be dived by 8
+//to jump 4 bytes on the char array (the RGBA values)
 void	draw_fractal(t_x_screen *x_screen, t_fractal_config *config)
 {
 	double				x;
@@ -26,6 +28,7 @@ void	draw_fractal(t_x_screen *x_screen, t_fractal_config *config)
 	img_position = mlx_get_data_addr(x_screen->x_img->img,
 			&(x_screen->x_img->bpp), &(x_screen->x_img->sl),
 			&(x_screen->x_img->end));
+	printf("%d", x_screen->x_img->bpp);
 	y = 0;
 	while (y < x_screen->x_img->heigth)
 	{
