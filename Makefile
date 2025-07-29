@@ -14,9 +14,9 @@ CC = cc
 
 CFLAGS = -g -Wall -Werror -Wextra
 
-LFLAGS =  -L./libft -lft -L./minilibx -lmlx -lXext -lX11 -lm
+LFLAGS =  -L./libft -lft -L./mini -lmlx -lXext -lX11 -lm
 
-IFLAGS = -Iminilibx -Ilibft -Ilibft/libftprintf -Ilibft/libftget_next_line
+IFLAGS = -Imini -Ilibft -Ilibft/libftprintf -Ilibft/libftget_next_line
 
 SRCS = main.c \
 		free_memory.c \
@@ -35,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft all
-	@$(MAKE) -C ./minilibx all
+	@$(MAKE) -C ./mini all
 	@$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
 
 %.o: %.c
@@ -43,14 +43,14 @@ $(NAME): $(OBJS)
 
 clean:
 	@$(MAKE) -C ./libft clean
-	@$(MAKE) -C ./minilibx clean
+	@$(MAKE) -C ./mini clean
 	@rm -rf *.o
 
 fclean: clean
-	@$(MAKE) -C ./minilibx clean
+	@$(MAKE) -C ./mini clean
 	@$(MAKE) -C ./libft fclean
 	@rm -rf $(NAME)
 
 re: fclean all
 	@$(MAKE) -C ./libft re
-	@$(MAKE) -C ./minilibx re
+	@$(MAKE) -C ./mini re
